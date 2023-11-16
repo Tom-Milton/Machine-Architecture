@@ -1,0 +1,45 @@
+	IN	
+	OUT
+	BRZ	end1	#checks if 0 to terminate
+	STO	a
+	STO	b	
+	BR	clear 	#resets count from previous executions 	
+check	LDA	count	#counts multiples of 2
+	ADD	1	
+	STO	count	
+	LDA	a	#checks if even or odd
+	SUB	2	
+	STO	a
+	BRZ	even	#ends loop if even
+	BRP	check	#loops check function and ends loop if odd	
+odd	LDA	b	
+	SUB	1	#checks if 1 to terminate
+	BRZ	end1
+	SUB	332	#checks if greater than 999 to terminate 
+	BRP	end2
+	ADD	b
+	ADD	b
+	ADD	332	
+	ADD	2	#adds 1 since 333 has already been subtracted
+	OUT
+	STO	a
+	BR	clear
+even	LDA	count
+	OUT
+	STO	a	
+	STO	b
+clear	LDA	count	#resets count
+	SUB	count	
+	STO	count	
+	BR	check
+end1	HLT
+end2	LDA	a 	#a = -1
+	ADD	1
+	OUT
+a	DAT 	000
+b	DAT	000
+1	DAT	001
+2	DAT	002
+332	DAT	332
+count	DAT	000
+

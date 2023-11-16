@@ -1,0 +1,27 @@
+	IN
+	STO	a
+	IN
+	STO	b
+	LDA	b
+	SUB	a
+	BRP	start
+	LDA	a
+	STO	temp
+	LDA	b
+	STO	a
+	LDA	temp
+	STO	b
+start	LDA	a
+	OUT
+	ADD	one
+	STO	a
+	SUB	b
+	BRP	end
+	BR	start
+end	LDA	b
+	OUT
+	HLT
+a	DAT	000
+b	DAT	000
+temp	DAT	000
+one	DAT	001
